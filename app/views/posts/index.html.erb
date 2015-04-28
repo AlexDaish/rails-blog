@@ -1,0 +1,30 @@
+<header>
+	<h1>
+		<%= link_to"Alex's Awful Blog", root_path %>
+	</h1>
+	<div class="carousel">
+<!-- add in qoutes for carousel -->
+		<h3>The first draft of anything is shit. </br><cite>- Hemingway</cite></h3>
+<!-- add in paginatino -->
+	</div>
+</header>
+
+<section class="posts">
+	<% @posts.each do |post| %>
+		<section class="post">
+			<h2>
+				<%=link_to post.title, post_path(post.id) %>
+			</h2>
+			<p><%= truncate post.body, length: 90, separator: " " %></p>
+
+			<p>
+			<!-- Add in link to pulication later -->
+				<small>Posted <%= time_ago_in_words post.created_at =%> ago. </small>
+			</p>
+		</section>
+		
+</section>
+	<!-- add in pagination -->
+<% end %>
+
+

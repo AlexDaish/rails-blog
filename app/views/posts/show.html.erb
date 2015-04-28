@@ -19,10 +19,7 @@
 </div>
 
 <div> <!-- Refactor into helper -->
-<% if @post.pull_quote.present? %>
-	<blockqoute><%= @post.pull_quote %></blockqoute>
-	<% end %>	
-</div>
+<% pull @post.pull_quote %></div>
 </section>
 
 <section class="post__body">

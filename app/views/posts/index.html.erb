@@ -28,7 +28,7 @@
 
 			<p>
 			<!-- Add in link to pulication later -->
-				<small>Posted <%= time_ago_in_words post.created_at =%> ago. </small>
+				<small>Posted <%= time_ago_in_words post.created_at =%> ago. <%= link_to_publication(post, seperator: true ) if post.published? %></small>
 			</p>
 		</section>
 		<% end %>

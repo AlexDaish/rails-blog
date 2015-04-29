@@ -2,7 +2,13 @@
 	<h2><%= @post.title %></h2>
 	<p>By <%= link_to @post.author, root_path(author: @post.author.downcase.to_param) %></p>
 	<p>
+	
 	<small>Posted <%= time_ago_in_words @post.created_at %> ago.</small>
+	
+	</p>
+
+	<p>
+		<small><%= link_to_publication(@post) if @post.published? %></small>
 	</p>
 
 <!-- Remember to add publication logic -->
@@ -10,16 +16,19 @@
 
 <div class="actions">
 	<%= link_to "home", root_path, class: "actions__link"%>
-	<span>•</span>
+	<span class=\"separator\">•</span>
 	<%= link_to "edit", edit_post_path(@post), class: "actions__link" %>
-	<span>•</span>
+	<span class=\"separator\">•</span>
 	<%= link_to "delete", post_path(@post), method: :delete, confirm: true, class: "actions__link" %>
 
 	
 </div>
 
-<div> <!-- Refactor into helper -->
+<div> 
+<!-- Refactor into helper -->
+<blockquote>
 <%= @post.pull_quote %></div>
+</blockquote>
 </section>
 
 <section class="post__body">

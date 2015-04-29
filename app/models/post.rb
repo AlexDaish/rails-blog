@@ -11,4 +11,7 @@ class Post < ActiveRecord::Base
 
   paginates_per 3
 
+  def self.from_param(param)
+  	where(author: NameCase(param))
+  end
 end

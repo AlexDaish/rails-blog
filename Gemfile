@@ -56,3 +56,5 @@ group :development do
 gem 'simple_form'
 
 gem 'kaminari'
+
+gem 'namecase'

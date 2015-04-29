@@ -1,9 +1,17 @@
 class PostsController < ApplicationController
   before_action :find_post, except: [:index, :new, :create]
   def index
-  	#assign all posts to variable called @posts
-  	@posts = Post.all.page params[:page]
-  	#render the index template (implicit once root "post#index" added to routes.rb)
+
+    if params[:author].present?
+    #only show posts by that author
+      @posts = Post.from_param(params[:author]).page params[:page]
+    else 
+    #show all posts----
+    #assign all posts to variable called @posts
+      @posts = Post.all.page params[:page]
+    end
+    #render the index template (implicit once root "post#index" added to routes.rb)
+    @quotes = @posts.pluck(:pull_quote)
   end
 
   #def show
@@ -52,7 +60,7 @@ end
   	#assign the post we want to edit to @post
     #@post = Post.find(params[:id])
   	#if post saves redirect to show page
-    if @post.save
+    if @post.update(post_params)
       flash[:success] = "Your post was successful"
       redirect_to @post
     else 

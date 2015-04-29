@@ -2,12 +2,21 @@
 	<h1>
 		<%= link_to"Alex's Awful Blog", root_path %>
 	</h1>
-	<div class="carousel">
+	<div class="carousel" data-quotes="<%= @quotes %>">
 <!-- add in qoutes for carousel -->
 		<h3>This is a great blog. </br><cite>- A Fucking Idiot</cite></h3>
 <!-- add in pagination -->
 	</div>
 </header>
+	<!-- add in pagination -->
+<nav class="pagination pagination__top">
+	<span class="next">
+		<%= link_to_next_page @posts, 'next' %>
+	</span>
+	<span class="previous">
+		<%= link_to_previous_page @posts, 'previous page' %>
+	</span>
+</nav>
 
 <section class="posts">
 	<% @posts.each do |post| %>
@@ -24,7 +33,8 @@
 		</section>
 		<% end %>
 </section>
-	<!-- add in pagination -->
+
+
 	<hr>
 	<%= paginate @posts %>
 

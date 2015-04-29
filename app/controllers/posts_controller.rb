@@ -12,6 +12,8 @@ class PostsController < ApplicationController
   	#render show template (implicitly happening in the background)
   end
 
+
+
   def new
   	#assign a new empty post instance to @post
     @post = Post.new

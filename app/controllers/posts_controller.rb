@@ -6,10 +6,17 @@ class PostsController < ApplicationController
   	#render the index template (implicit once root "post#index" added to routes.rb)
   end
 
-  def show
+  #def show
   	#assign 1 post to variable called @post (singular)
   	#@post = Post.find(params[:id])
   	#render show template (implicitly happening in the background)
+
+  def show
+    #assign one post to @post -> refactored into before action
+
+    # assign all comments for the post to @comments
+    @comments = @post.comments.all
+    # render show template (implicity happening)
   end
 
 
@@ -33,7 +40,7 @@ class PostsController < ApplicationController
       flash[:error] = t(:error_msg)
       render :new
     end
-  end
+end
 
   def edit
   	#assign the post we want to edit to variable @post

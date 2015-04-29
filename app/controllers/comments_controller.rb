@@ -1,9 +1,12 @@
 class CommentsController < ApplicationController
+  
   def new
   	# find the post
     @post = Post.find(params[:post_id])
   	# Assign a new empty comment to @comment (<- comment variable)
     @comment = @post.comments.new
+  end
+    
   end
 
   def create
@@ -18,10 +21,10 @@ class CommentsController < ApplicationController
     # and redirect to show post
       redirect_to @post
     # else
-    else
-    flash[:error] = t(:error_msg)
+      else
+      flash[:error] = t(:error_msg)
   	# flash error
-    render :new
+      render :new
     # render new
     end
   	

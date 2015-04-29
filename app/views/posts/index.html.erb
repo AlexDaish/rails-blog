@@ -22,9 +22,11 @@
 				<small>Posted <%= time_ago_in_words post.created_at =%> ago. </small>
 			</p>
 		</section>
-		
+		<% end %>
 </section>
 	<!-- add in pagination -->
-<% end %>
+	<hr>
+	<%= paginate @posts %>
+
 
 

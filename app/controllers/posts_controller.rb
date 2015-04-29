@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :find_post, except: [:index, :new, :create]
   def index
   	#assign all posts to variable called @posts
-  	@posts = Post.all
+  	@posts = Post.all.page params[:page]
   	#render the index template (implicit once root "post#index" added to routes.rb)
   end
 

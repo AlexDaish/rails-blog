@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
   def new
   	# find the post
+    @post = Post.find(params[:post_id])
   	# Assign a new empty comment to @comment (<- comment variable)
+    @comment = @post.comments.new
   end
 
   def create
